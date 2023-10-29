@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CompaniesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,12 +21,16 @@ Route::get('/', function () {
 
 Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::get('/', 'IndexController')->name('admin.index');
-    Route::get('company', function() {
-        return view('admin.company');
-    })->name('admin.company');
+    Route::group(['controller' => CompaniesController::class,'prefix' => 'companies'], function() {
+        Route::get('/', 'index')->name('companies.index');
+        Route::get('/create', 'create')->name('companies.create');
+        Route::post('/', 'store')->name('companies.store');
+        Route::get('/{company}', 'show')->name('companies.show');
+        Route::get('/{company}/edit', 'edit')->name('companies.edit');
+        Route::patch('/{company}', 'update')->name('companies.update');
+        Route::delete('/{company}', 'destroy')->name('companies.destroy');
+    });
 });
-
-
 
 Route::get('/home', function () {
     return view('home');
