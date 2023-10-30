@@ -22,23 +22,23 @@ Route::get('/', function () {
 
 Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::get('/', 'IndexController')->name('admin.index');
-    Route::group(['controller' => CompaniesController::class,'prefix' => 'companies'], function() {
-        Route::get('/', 'index')->name('companies.index');
-        Route::get('/create', 'create')->name('companies.create');
-        Route::post('/', 'store')->name('companies.store');
-        Route::get('/{company}', 'show')->name('companies.show');
-        Route::get('/{company}/edit', 'edit')->name('companies.edit');
-        Route::patch('/{company}', 'update')->name('companies.update');
-        Route::delete('/{company}', 'destroy')->name('companies.destroy');
+    Route::group(['namespace' => 'Company','prefix' => 'companies'], function() {
+        Route::get('/', 'IndexController')->name('companies.index');
+        Route::get('/create', 'CreateController')->name('companies.create');
+        Route::post('/', 'StoreController')->name('companies.store');
+        Route::get('/{company}', 'ShowController')->name('companies.show');
+        Route::get('/{company}/edit', 'EditController')->name('companies.edit');
+        Route::patch('/{company}', 'UpdateController')->name('companies.update');
+        Route::delete('/{company}', 'DestroyController')->name('companies.destroy');
     });
-    Route::group(['controller' => EmployeesController::class,'prefix' => 'employees'], function() {
-        Route::get('/', 'index')->name('employees.index');
-        Route::get('/create', 'create')->name('employees.create');
-        Route::post('/', 'store')->name('employees.store');
-        Route::get('/{employee}', 'show')->name('employees.show');
-        Route::get('/{employee}/edit', 'edit')->name('employees.edit');
-        Route::patch('/{employee}', 'update')->name('employees.update');
-        Route::delete('/{employee}', 'destroy')->name('employees.destroy');
+    Route::group(['namespace' => 'Employee','prefix' => 'employees'], function() {
+        Route::get('/', 'IndexController')->name('employees.index');
+        Route::get('/create', 'CreateController')->name('employees.create');
+        Route::post('/', 'StoreController')->name('employees.store');
+        Route::get('/{employee}', 'ShowController')->name('employees.show');
+        Route::get('/{employee}/edit', 'EditController')->name('employees.edit');
+        Route::patch('/{employee}', 'UpdateController')->name('employees.update');
+        Route::delete('/{employee}', 'DestroyController')->name('employees.destroy');
     });
 });
 
