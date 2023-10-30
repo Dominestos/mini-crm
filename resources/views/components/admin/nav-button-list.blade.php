@@ -4,12 +4,18 @@
              with font-awesome or any other icon font library -->
         <h2 class="nav-header">ADMIN MENU</h2>
         <li class="nav-item">
-            <a href="{{ route('admin.company') }}" class="nav-link">
+            <a href="{{ route('companies.index') }}" class="nav-link">
                 <i class="nav-icon far fa-calendar-alt"></i>
                 <p>
                     Companies
-                    <span class="badge badge-info right">2</span>
+                    <span class="badge badge-info right">{{ isset($companies) ? $companies->count() : '' }}</span>
                 </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('employees.index') }}" class="nav-link">
+                <i class="nav-icon far fa-calendar-alt"></i>
+                <p>Employees</p>
             </a>
         </li>
     </ul>
