@@ -3,21 +3,15 @@
 namespace App\Http\Controllers\Admin\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Employee\StoreRequest;
 use App\Models\Employee;
 
 class StoreController extends Controller
 {
 
-    public function __invoke()
+    public function __invoke(StoreRequest $request)
     {
-        $data = request()->validate([
-            'first_name' => ['string', 'max:20', 'required'],
-            'second_name' => ['string', 'max:20', 'required'],
-            'email' => ['email', 'required'],
-            'phone' => ['string', 'regex:/^\+?\d{1,3}[-\s]?\d{5,10}$/', 'required'],
-            'note' => ['string', 'nullable'],
-            'company_id' => ['integer', 'required'],
-        ]);
+        $data = $request->validated();
         Employee::create($data);
         return redirect()->route('employees.index');
     }

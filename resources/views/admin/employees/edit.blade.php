@@ -31,11 +31,11 @@
                             @method('patch')
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="">{{ __('Name') }}</label>
+                                    <label for="firstNameInput">{{ __('First Name') }}</label>
                                     <input name="first_name" type="text" class="form-control" id="firstNameInput" placeholder="{{ __('Enter first name') }}" value="{{ $employee->first_name ?? '' }}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">{{ __('Name') }}</label>
+                                    <label for="secondNameInput">{{ __('Second Name') }}</label>
                                     <input name="second_name" type="text" class="form-control" id="secondNameInput" placeholder="{{ __('Enter second name') }}" value="{{ $employee->second_name ?? '' }}">
                                 </div>
                                 <div class="form-group">
