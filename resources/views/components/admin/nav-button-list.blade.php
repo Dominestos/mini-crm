@@ -12,5 +12,11 @@
                 </p>
             </a>
         </li>
+        <li class="nav-item">
+            <a href="{{ route('employees.index') }}" class="nav-link">
+                <i class="nav-icon far fa-calendar-alt"></i>
+                <p>Employees</p>
+            </a>
+        </li>
     </ul>
 </nav>
