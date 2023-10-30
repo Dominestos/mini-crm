@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Employee;
 
-use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\Employee;
 
-class IndexController extends Controller
+class IndexController extends BaseController
 {
 
     public function __invoke()

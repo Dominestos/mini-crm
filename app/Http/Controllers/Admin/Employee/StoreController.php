@@ -2,23 +2,17 @@
 
 namespace App\Http\Controllers\Admin\Employee;
 
-use App\Http\Controllers\Controller;
-use App\Models\Employee;
+use App\Http\Requests\Employee\StoreRequest;
 
-class StoreController extends Controller
+class StoreController extends BaseController
 {
 
-    public function __invoke()
+    public function __invoke(StoreRequest $request)
     {
-        $data = request()->validate([
-            'first_name' => ['string', 'max:20', 'required'],
-            'second_name' => ['string', 'max:20', 'required'],
-            'email' => ['email', 'required'],
-            'phone' => ['string', 'regex:/^\+?\d{1,3}[-\s]?\d{5,10}$/', 'required'],
-            'note' => ['string', 'nullable'],
-            'company_id' => ['integer', 'required'],
-        ]);
-        Employee::create($data);
+        $data = $request->validated();
+
+        $this->service->store($data);
+
         return redirect()->route('employees.index');
     }
 

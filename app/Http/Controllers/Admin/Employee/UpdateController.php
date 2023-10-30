@@ -2,24 +2,18 @@
 
 namespace App\Http\Controllers\Admin\Employee;
 
-use App\Http\Controllers\Controller;
+use App\Http\Requests\Employee\UpdateRequest;
 use App\Models\Employee;
 
-class UpdateController extends Controller
+class UpdateController extends BaseController
 {
 
-    public function __invoke(Employee $employee)
+    public function __invoke(UpdateRequest $request, Employee $employee)
     {
-        $data = request()->validate([
-            'first_name' => ['string', 'max:20', 'required'],
-            'second_name' => ['string', 'max:20', 'required'],
-            'email' => ['email', 'required'],
-            'phone' => ['string', 'regex:/^\+?\d{1,3}[-\s]?\d{5,10}$/', 'required'],
-            'note' => ['string', 'nullable'],
-            'company_id' => ['integer', 'required'],
-        ]);
+        $data = $request->validated();
 
-        $employee->update($data);
+        $this->service->update($employee, $data);
+
         return redirect()->route('employees.show', [$employee->id]);
     }
 

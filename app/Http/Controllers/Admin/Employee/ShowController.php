@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Admin\Employee;
 
-use App\Http\Controllers\Controller;
 use App\Models\Employee;
 
-class ShowController extends Controller
+class ShowController extends BaseController
 {
 
     public function __invoke(Employee $employee)

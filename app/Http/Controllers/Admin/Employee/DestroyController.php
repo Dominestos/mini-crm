@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Admin\Employee;
 
-use App\Http\Controllers\Controller;
 use App\Models\Employee;
 
-class DestroyController extends Controller
+class DestroyController extends BaseController
 {
 
     public function __invoke(Employee $employee)
