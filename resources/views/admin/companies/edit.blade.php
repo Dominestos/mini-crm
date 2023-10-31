@@ -31,33 +31,51 @@
                             @method('patch')
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="">{{ __('Name') }}</label>
-                                    <input name="name" type="text" class="form-control" id="nameInput" placeholder="{{ __('Enter name') }}" value="{{ $company->name ?? '' }}">
+                                    <label for="nameInput">{{ __('Name') }}</label>
+                                    <input name="name" type="text" class="form-control" id="nameInput" placeholder="{{ __('Enter name') }}" value="{{ old('name') ?? $company->name }}">
+                                    @error('name')
+                                    <span id="nameInput-error" class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="emailInput">{{ __('Email address') }}</label>
-                                    <input name="email" type="email" class="form-control" id="emailInput" placeholder="{{ __('Enter email') }}" value="{{ $company->email ?? '' }}">
+                                    <input name="email" type="email" class="form-control" id="emailInput" placeholder="{{ __('Enter email') }}" value="{{ old('email') ?? $company->email }}">
+                                    @error('email')
+                                    <span id="emailInput-error" class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="phoneField">{{ __('Mobile phone') }}</label>
-                                    <input name="phone" type="tel" class="form-control" id="phoneField" placeholder="{{ __('Enter phone') }}" value="{{ $company->phone ?? '' }}">
+                                    <input name="phone" type="tel" class="form-control" id="phoneField" placeholder="{{ __('Enter phone') }}" value="{{ old('phone') ?? $company->phone }}">
+                                    @error('phone')
+                                    <span id="phoneFieldt-error" class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="websiteAddressField">{{ __('Website') }}</label>
-                                    <input name="website" type="url" class="form-control" id="websiteAddressField" placeholder="{{ __('Enter website address') }}" value="{{ $company->website ?? '' }}">
+                                    <input name="website" type="url" class="form-control" id="websiteAddressField" placeholder="{{ __('Enter website address') }}" value="{{ old('website') ?? $company->website }}">
+                                    @error('website')
+                                    <span id="websiteAddressField-error" class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="loadLogo">{{ __('Logo') }}</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input name="logo" type="file" class="custom-file-input" id="loadLogo" value="{{ $company->logo ?? '' }}">
+                                            <input name="logo" type="file" class="custom-file-input" id="loadLogo" value="{{ old('logo') ?? $company->logo }}">
                                             <label class="custom-file-label" for="loadLogo">{{ __('Choose file') }}</label>
                                         </div>
                                     </div>
+                                    @error('logo')
+                                    <span id="loadLogo-error" class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="noteField">{{ __('Note') }}</label>
-                                    <textarea name="note" class="form-control" id="noteField" rows="3" placeholder="{{ __('Enter note') }}">{{ $company->note ?? '' }}</textarea>
+                                    <textarea name="note" class="form-control" id="noteField" rows="3" placeholder="{{ __('Enter note') }}">{{ old('note') ?? $company->note }}</textarea>
+                                    @error('note')
+                                    <span id="noteField-error" class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
 

@@ -32,23 +32,38 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="firstNameInput">{{ __('First Name') }}</label>
-                                    <input name="first_name" type="text" class="form-control" id="firstNameInput" placeholder="{{ __('Enter first name') }}" value="{{ $employee->first_name ?? '' }}">
+                                    <input name="first_name" type="text" class="form-control" id="firstNameInput" placeholder="{{ __('Enter first name') }}" value="{{ old('first_name') ?? $employee->first_name ?? '' }}">
+                                    @error('first_name')
+                                        <span id="firstNameInput-error" class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="secondNameInput">{{ __('Second Name') }}</label>
-                                    <input name="second_name" type="text" class="form-control" id="secondNameInput" placeholder="{{ __('Enter second name') }}" value="{{ $employee->second_name ?? '' }}">
+                                    <input name="second_name" type="text" class="form-control" id="secondNameInput" placeholder="{{ __('Enter second name') }}" value="{{ old('second_name') ?? $employee->second_name ?? '' }}">
+                                    @error('second_name')
+                                        <span id="secondNameInput-error" class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="emailInput">{{ __('Email address') }}</label>
-                                    <input name="email" type="email" class="form-control" id="emailInput" placeholder="{{ __('Enter email') }}" value="{{ $employee->email ?? '' }}">
+                                    <input name="email" type="email" class="form-control" id="emailInput" placeholder="{{ __('Enter email') }}" value="{{ old('email') ?? $employee->email ?? '' }}">
+                                    @error('email')
+                                        <span id="emailInput-error" class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="phoneField">{{ __('Mobile phone') }}</label>
-                                    <input name="phone" type="tel" class="form-control" id="phoneField" placeholder="{{ __('Enter phone') }}" value="{{ $employee->phone ?? '' }}">
+                                    <input name="phone" type="tel" class="form-control" id="phoneField" placeholder="{{ __('Enter phone') }}" value="{{ old('phone') ?? $employee->phone ?? '' }}">
+                                    @error('phone')
+                                        <span id="phoneField-error" class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="noteField">{{ __('Note') }}</label>
-                                    <textarea name="note" class="form-control" id="noteField" rows="3" placeholder="{{ __('Enter note') }}">{{ $employee->note ?? '' }}</textarea>
+                                    <textarea name="note" class="form-control" id="noteField" rows="3" placeholder="{{ __('Enter note') }}">{{ old('note') ?? $employee->note ?? '' }}</textarea>
+                                    @error('note')
+                                        <span id="noteField-error" class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="companyInput">{{ __('Change company') }}</label>

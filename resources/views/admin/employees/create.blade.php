@@ -31,23 +31,38 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="firstNameInput">{{ __('First Name') }}</label>
-                                    <input name="first_name" type="text" class="form-control" id="firstNameInput" placeholder="{{ __('Enter first name') }}">
+                                    <input value="{{ old('first_name') }}" name="first_name" type="text" class="form-control" id="firstNameInput" placeholder="{{ __('Enter first name') }}">
+                                    @error('first_name')
+                                        <span id="firstNameInput-error" class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="secondNameInput">{{ __('Second Name') }}</label>
-                                    <input name="second_name" type="text" class="form-control" id="secondNameInput" placeholder="{{ __('Enter second name') }}">
+                                    <input value="{{ old('second_name') }}" name="second_name" type="text" class="form-control" id="secondNameInput" placeholder="{{ __('Enter second name') }}">
+                                    @error('second_name')
+                                        <span id="secondNameInput-error" class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="emailInput">{{ __('Email address') }}</label>
-                                    <input name="email" type="email" class="form-control" id="emailInput" placeholder="{{ __('Enter email') }}">
+                                    <input value="{{ old('email') }}" name="email" type="email" class="form-control" id="emailInput" placeholder="{{ __('Enter email') }}">
+                                    @error('email')
+                                        <span id="emailInput-error" class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="phoneField">{{ __('Mobile phone') }}</label>
-                                    <input name="phone" type="tel" class="form-control" id="phoneField" placeholder="{{ __('Enter phone') }}">
+                                    <input value="{{ old('phone') }}" name="phone" type="tel" class="form-control" id="phoneField" placeholder="{{ __('Enter phone') }}">
+                                    @error('phone')
+                                        <span id="phoneField-error" class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="noteField">{{ __('Note') }}</label>
-                                    <textarea name="note" class="form-control" id="noteField" rows="3" placeholder="{{ __('Enter note') }}"></textarea>
+                                    <textarea name="note" class="form-control" id="noteField" rows="3" placeholder="{{ __('Enter note') }}">"{{ old('note') }}"</textarea>
+                                    @error('note')
+                                        <span id="noteField-error" class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group"><label for="companyInput">{{ __('Company') }}</label>
                                     <select name="company_id" class="form-control" id="companyInput" readonly>
