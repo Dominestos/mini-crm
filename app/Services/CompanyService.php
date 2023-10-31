@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Company;
+namespace App\Services;
 
 use App\Models\Company;
 
-class Service
+class CompanyService
 {
     public function store(array $data): void
     {

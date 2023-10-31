@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="noteField">{{ __('Note') }}</label>
-                                    <textarea name="note" class="form-control" id="noteField" rows="3" placeholder="{{ __('Enter note') }}">"{{ old('note') }}"</textarea>
+                                    <textarea name="note" class="form-control" id="noteField" rows="3" placeholder="{{ __('Enter note') }}">{{ old('note') }}</textarea>
                                     @error('note')
                                         <span id="noteField-error" class="text-danger">{{ $message }}</span>
                                     @enderror
