@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CompaniesController;
+use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\EmployeesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -22,24 +23,10 @@ Route::get('/', function () {
 
 Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function() {
     Route::get('/', 'IndexController')->name('admin.index');
-    Route::group(['namespace' => 'Company','prefix' => 'companies'], function() {
-        Route::get('/', 'IndexController')->name('companies.index');
-        Route::get('/create', 'CreateController')->name('companies.create');
-        Route::post('/', 'StoreController')->name('companies.store');
-        Route::get('/{company}', 'ShowController')->name('companies.show');
-        Route::get('/{company}/edit', 'EditController')->name('companies.edit');
-        Route::patch('/{company}', 'UpdateController')->name('companies.update');
-        Route::delete('/{company}', 'DestroyController')->name('companies.destroy');
-    });
-    Route::group(['namespace' => 'Employee','prefix' => 'employees'], function() {
-        Route::get('/', 'IndexController')->name('employees.index');
-        Route::get('/create', 'CreateController')->name('employees.create');
-        Route::post('/', 'StoreController')->name('employees.store');
-        Route::get('/{employee}', 'ShowController')->name('employees.show');
-        Route::get('/{employee}/edit', 'EditController')->name('employees.edit');
-        Route::patch('/{employee}', 'UpdateController')->name('employees.update');
-        Route::delete('/{employee}', 'DestroyController')->name('employees.destroy');
-    });
+    Route::resources([
+        'companies' => CompanyController::class,
+        'employees' => EmployeeController::class,
+    ]);
 });
 
 Route::get('/home', function () {
