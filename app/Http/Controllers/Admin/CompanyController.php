@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Company\StoreRequest;
 use App\Http\Requests\Company\UpdateRequest;
+use App\Http\Resources\CompanyResource;
 use App\Models\Company;
 use App\Services\CompanyService;
 
@@ -30,7 +31,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view('admin.companies.create');
+        return view('admin.companies.create')->renderSections()['content'];
     }
 
     /**
@@ -40,9 +41,11 @@ class CompanyController extends Controller
     {
         $data = $request->validated();
 
-        $this->service->store($data);
+        if ($company = $this->service->store($data)) {
 
-        return redirect()->route('companies.index');
+            return new CompanyResource($company);
+
+        }
     }
 
     /**
