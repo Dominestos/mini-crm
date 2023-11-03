@@ -26,7 +26,7 @@
                         <div class="card-header">
                             <h3 class="card-title">{{ __('Edit company info') }}</h3>
                         </div>
-                        <form action="{{ route('companies.update', $company->id) }}" method="post">
+                        <form action="{{ route('companies.update', $company->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('patch')
                             <div class="card-body">
@@ -62,7 +62,7 @@
                                     <label for="loadLogo">{{ __('Logo') }}</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input name="logo" type="file" class="custom-file-input" id="loadLogo" value="{{ old('logo') ?? $company->logo }}">
+                                            <input name="logo" type="file" class="custom-file-input" id="loadLogo">
                                             <label class="custom-file-label" for="loadLogo">{{ __('Choose file') }}</label>
                                         </div>
                                     </div>
@@ -93,4 +93,16 @@
     </section>
     <!-- /.content -->
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+@endpush
+
+@push('scripts')
+    <script>
+        $(function () {
+            bsCustomFileInput.init();
+        });
+    </script>
+@endpush
 

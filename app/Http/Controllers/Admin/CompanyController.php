@@ -81,7 +81,7 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        $company->delete();
+        $this->service->delete($company);
 
         return redirect()->route('companies.index');
     }
