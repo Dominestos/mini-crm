@@ -14,31 +14,37 @@
                         <div class="form-group">
                             <label for="nameInput">{{ __('Name') }}</label>
                             <input id="nameInput" name="name" class="form-control" placeholder="{{ __('Enter name') }}" value="{{ old('name') }}">
+                            <span id="name-error_text" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label for="emailInput">{{ __('Email address') }}</label>
                             <input id="emailInput" name="email" class="form-control" placeholder="{{ __('Enter email') }}"/>
+                            <span id="email-error_text" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label for="phoneField">{{ __('Mobile phone') }}</label>
                             <input id="phoneField" name="phone" class="form-control" placeholder="{{ __('Enter phone') }}"/>
+                            <span id="phone-error_text" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label for="websiteAddressField">{{ __('Website') }}</label>
                             <input id="websiteAddressField" name="website" class="form-control" placeholder="{{ __('Enter website address') }}"/>
+                            <span id="website-error_text" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label for="loadLogo">{{ __('Logo') }}</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input id="loadLogo" type="file" name="logo" class="custom-file-input"/>
                                     <label class="custom-file-label" for="loadLogo">{{ __('Choose file') }}</label>
+                                    <input id="loadLogo" type="file" name="logo" class="custom-file-input"/>
                                 </div>
                             </div>
+                            <span id="logo-error_text" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label for="noteField">{{ __('Note') }}</label>
                             <textarea id="noteField" name="note" class="form-control" rows="3" placeholder="{{ __('Enter note') }}"></textarea>
+                            <span id="note-error_text" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">

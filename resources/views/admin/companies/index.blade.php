@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('styles')
+@push('styles')
     <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}">
-@endsection
+@endpush
 
 @section('content')
     <div class="card">
@@ -50,9 +50,12 @@
     <div id="addCompanyFormContainer"></div>
 @endsection
 
-@section('scripts')
+@push('scripts')
     <script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
+    <script src="{{ asset('/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+@endpush
 
+@push('scripts')
     <script>
         $(document).ready(function () {
 
@@ -66,6 +69,7 @@
 
                         $('#addCompanyFormContainer').html(response);
                         $('#addCompanyModal').modal('show');
+                        bsCustomFileInput.init();
 
                         $('#addCompanyForm').submit(function (e) {
                             e.preventDefault();
@@ -81,9 +85,6 @@
                                 type: $(this).attr('method'),
                                 dataType: 'json',
                                 data: formData,
-                                // headers: {
-                                //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                                // },
                                 processData: false,
                                 contentType: false,
                                 success: function (response) {
@@ -97,11 +98,13 @@
 
                                     var errors = JSON.parse(xhr.responseText).errors;
 
+                                    $('.text-danger').text('');
+
                                     for (var key in errors) {
                                         if (errors.hasOwnProperty(key)) {
                                             var lastError = errors[key][errors[key].length - 1];
-                                            var errorSpan = $('<span>').addClass('text-danger').text(lastError);
-                                            $('[name="' + key + '"]').val('').after(errorSpan);
+                                            $('[name="' + key + '"]').val('');
+                                            $('#' + key + '-error_text').text(lastError);
                                         }
                                     }
                                 },
@@ -118,4 +121,4 @@
             });
         });
     </script>
-@endsection
+@endpush
