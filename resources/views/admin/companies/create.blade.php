@@ -13,7 +13,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="nameInput">{{ __('Name') }}</label>
-                            <input id="nameInput" name="name" class="form-control" placeholder="{{ __('Enter name') }}" value="{{ old('name') }}">
+                            <input id="nameInput" name="name" class="form-control" placeholder="{{ __('Enter name') }}"/>
                             <span id="name-error_text" class="text-danger"></span>
                         </div>
                         <div class="form-group">

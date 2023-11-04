@@ -81,7 +81,7 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        $message = $company->name.'. '.__('Company was successfully deleted');
+        $message = $company->name.'. ' . __('Company was successfully deleted');
         if($this->service->destroy($company)) {
             return redirect()->route('companies.index')->with('delete-message', $message);
         }

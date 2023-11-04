@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Employee\StoreRequest;
 use App\Http\Requests\Employee\UpdateRequest;
+use App\Http\Resources\EmployeeResource;
 use App\Models\Company;
 use App\Models\Employee;
 use App\Services\EmployeeService;
@@ -36,7 +37,7 @@ class EmployeeController extends Controller
 
         $company = Company::findOrFail($companyID);
 
-        return view('admin.employees.create', compact('company'));
+        return view('admin.employees.create', compact('company'))->renderSections()['content'];
     }
 
 
@@ -47,9 +48,10 @@ class EmployeeController extends Controller
     {
         $data = $request->validated();
 
-        $this->service->store($data);
+        if ($employee = $this->service->store($data)) {
+            return new EmployeeResource($employee);
 
-        return redirect()->route('employees.index');
+        }
     }
 
 
@@ -67,7 +69,7 @@ class EmployeeController extends Controller
     public function edit(Employee $employee)
     {
         $companies = Company::all();
-        return view('admin.employees.edit', compact(['employee', 'companies']));
+        return view('admin.employees.edit', compact(['employee', 'companies']))->renderSections()['content'];
     }
 
     /**
@@ -77,9 +79,10 @@ class EmployeeController extends Controller
     {
         $data = $request->validated();
 
-        $this->service->update($employee, $data);
+        if ($this->service->update($employee, $data)) {
+            return new EmployeeResource($employee);
+        }
 
-        return redirect()->route('employees.show', [$employee->id]);
     }
 
     /**
@@ -87,8 +90,10 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        $employee->delete();
-        return redirect()->route('employees.index');
+        $message = $employee->first_name . ' ' . $employee->second_name . '. ' . __('Employee was successfully deleted');
+        if($employee->delete()) {
+            return redirect()->route('employees.index')->with('delete-message', $message);
+        }
     }
 
 }

@@ -47,41 +47,7 @@
                         <button id="deleteCompanyBtn" class="btn btn-danger mx-2" data-targer="deleteCompanyModal">{{ __('Delete') }}</button>
                         <a href="{{ route('companies.index') }}" class="btn-link mx-5">{{ __('Back to the company list') }}</a>
                     </div>
-                    <div class="card mt-3">
-                        <div class="card-header">
-                            <h3 class="card-title">{{ __('Employees worked at this company') }}</h3>
-                            <a href="{{ route('employees.create', ['companyID' => $company->id]) }}" class="btn btn-primary float-right">{{ __('Add new employee') }}</a>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped">
-                                <thead>
-                                <tr>
-                                    <th>№</th>
-                                    <th>{{ __('First Name') }}</th>
-                                    <th>{{ __('Second Name') }}</th>
-                                    <th>{{ __('Email') }}</th>
-                                    <th>{{ __('Phone') }}</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @php
-                                    $counter = 1;
-                                @endphp
-                                @foreach($company->employees as $employee)
-                                        <tr>
-                                            <td>{{ $counter++ }}</td>
-                                            <td><a href="{{ route('employees.show', $employee->id) }}" >{{ $employee->first_name }}</a></td>
-                                            <td>{{ $employee->second_name }}</td>
-                                            <td>{{ $employee->email }}</td>
-                                            <td>{{ $employee->phone }}</td>
-                                        </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
+                    @include('components.admin.employees.table-list')
                 </div>
             </div>
         </div>
