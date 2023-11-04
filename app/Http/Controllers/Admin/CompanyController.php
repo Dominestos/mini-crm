@@ -42,7 +42,6 @@ class CompanyController extends Controller
         $data = $request->validated();
 
         if ($company = $this->service->store($data)) {
-
             return new CompanyResource($company);
 
         }
@@ -61,7 +60,7 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        return view('admin.companies.edit', compact('company'));
+        return view('admin.companies.edit', compact('company'))->renderSections()['content'];
     }
 
     /**
@@ -71,9 +70,10 @@ class CompanyController extends Controller
     {
         $data = $request->validated();
 
-        $this->service->update($company, $data);
+        if($this->service->update($company, $data)) {
+            return new CompanyResource($company);
+        }
 
-        return redirect()->route('companies.show', [$company->id]);
     }
 
     /**
@@ -81,9 +81,11 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        $this->service->delete($company);
+        $message = $company->name.'. '.__('Company was successfully deleted');
+        if($this->service->destroy($company)) {
+            return redirect()->route('companies.index')->with('delete-message', $message);
+        }
 
-        return redirect()->route('companies.index');
     }
 
 }

@@ -21,6 +21,10 @@ class CompanyResource extends JsonResource
             'website' => $this->website,
             'logo' => $this->logo,
             'note' => $this->note,
+            'messages' => [
+                'store' => $this->when($request->method() === 'POST', $this->name . '. ' . __('Company was successfully created!')),
+                'update' => $this->when($request->method() === 'PATCH', $this->name . '. ' . __('Company was successfully edited!')),
+            ]
         ];
     }
 }

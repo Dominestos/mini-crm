@@ -59,6 +59,12 @@
     <script>
         $(document).ready(function () {
 
+            var message = '{{ session('delete-message') }}';
+
+            if (message) {
+                toastr.success(message);
+            }
+
             $('#addCompanyBtn').click(function (e) {
                 e.preventDefault();
 
@@ -76,10 +82,6 @@
 
                             var formData = new FormData(this);
 
-                            for (var pair of formData.entries()) {
-                                console.log(pair[0] + ': ' + pair[1]);
-                            }
-
                             $.ajax({
                                 url: $(this).attr('{{ route('companies.store') }}'),
                                 type: $(this).attr('method'),
@@ -89,9 +91,8 @@
                                 contentType: false,
                                 success: function (response) {
 
-                                    console.log(response);
                                     $('#addCompanyModal').modal('hide');
-                                    toastr.success('{{ __('New Company successfully added!') }}');
+                                    toastr.success(response.data.messages.store);
 
                                 },
                                 error: function (xhr, status, error) {

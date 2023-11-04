@@ -11,7 +11,7 @@ class CompanyService
 {
     public function store(array $data)
     {
-        if ($data['logo'] !== null) {
+        if (isset($data['logo'])) {
             $data['logo'] = $this->saveLogo($data['logo']);
         }
         return Company::create($data);
@@ -21,27 +21,27 @@ class CompanyService
     {
         if (isset($data['logo'])) {
             if ($company->logo) {
-                $this->deleteLogo($company->logo);                                          /** !!!!! */
+                $this->deleteLogo($company->logo);
             }
             $data['logo'] = $this->saveLogo($data['logo']);
         }
 
-        $company->update($data);
+        return $company->update($data);
     }
 
-    public function delete(Company $company)
+    public function destroy(Company $company)
     {
         if ($company->logo) {
             $this->deleteLogo($company->logo);
         }
-        $company->delete();
+        return $company->delete();
     }
 
     protected function saveLogo(UploadedFile $logo)
     {
         $filename = md5(Carbon::now() . $logo->getClientOriginalName()) . '.' . $logo->getClientOriginalExtension();
 
-        return Storage::disk('public')->putFileAs('logo', $logo, $filename);                        /** "logo/60a24a4bc0cc4a631541ac2613b67561.png"  */
+        return Storage::disk('public')->putFileAs('logo', $logo, $filename);
     }
 
     protected function deleteLogo(string $logo)
