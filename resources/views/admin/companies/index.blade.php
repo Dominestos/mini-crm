@@ -5,48 +5,57 @@
 @endpush
 
 @section('content')
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">{{ __('Companies list') }}</h3>
-            <button id="addCompanyBtn" type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modal-lg">{{ __('Add new company') }}</button>
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                    <th>№</th>
-                    <th>{{ __('Name') }}</th>
-                    <th>{{ __('Email') }}</th>
-                    <th>{{ __('Phone') }}</th>
-                    <th>{{ __('Website') }}</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($companies as $company)
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 my-5">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">{{ __('Companies list') }}</h3>
+                            <button id="addCompanyBtn" type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modal-lg">{{ __('Add new company') }}</button>
+                        </div>
+                        <div class="card-body">
+                            <table id="companies-table" class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>№</th>
+                                    <th>{{ __('Name') }}</th>
+                                    <th>{{ __('Email') }}</th>
+                                    <th>{{ __('Phone') }}</th>
+                                    <th>{{ __('Website') }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($companies as $company)
 
-                    <tr>
-                        <td>{{ $company->id }}</td>
-                        <td><a href="{{ route('companies.show', $company->id) }}">{{ $company->name }}</a></td>
-                        <td>{{ $company->email }}</td>
-                        <td>{{ $company->phone }}</td>
-                        <td>{{ $company->website }}</td>
-                    </tr>
-                @endforeach
-                </tbody>
-                <tfoot>
-                <tr>
-                    <th>№</th>
-                    <th>{{ __('Name') }}</th>
-                    <th>{{ __('Email') }}</th>
-                    <th>{{ __('Phone') }}</th>
-                    <th>{{ __('Website') }}</th>
-                </tr>
-                </tfoot>
-            </table>
+                                    <tr class="clickable-row" data-url="{{ route('companies.show', $company->id) }}">
+                                        <td >{{ $company->id }}</td>
+                                        <td>{{ $company->name }}</td>
+                                        <td>{{ $company->email }}</td>
+                                        <td>{{ $company->phone }}</td>
+                                        <td>{{ $company->website }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>№</th>
+                                    <th>{{ __('Name') }}</th>
+                                    <th>{{ __('Email') }}</th>
+                                    <th>{{ __('Phone') }}</th>
+                                    <th>{{ __('Website') }}</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
         </div>
-        <!-- /.card-body -->
-    </div>
+        <!-- /.container-fluid -->
+    </section>
     <div id="addCompanyFormContainer"></div>
 @endsection
 
@@ -119,6 +128,22 @@
                         console.error(xhr.responseText);
                     },
                 });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#companies-table").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": [
+                    "excel",
+                    "colvis"
+                ],
+            }).buttons().container().appendTo('#companies-table_wrapper .col-md-6:eq(0)');
+            $("#companies-table").on('click', '.clickable-row', function () {
+                window.location = $(this).data("url");
             });
         });
     </script>

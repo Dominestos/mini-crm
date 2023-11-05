@@ -38,9 +38,17 @@
                         </div>
                         <div class="form-group">
                             <label for="companyInput">{{ __('Company') }}</label>
-                            <select name="company_id" class="form-control" id="companyInput" readonly>
-                                <option value="{{ $company->id }}" selected>{{ $company->name }}</option>
-                            </select>
+                            @if(isset($company))
+                                <select name="company_id" class="form-control" id="companyInput" readonly>
+                                    <option value="{{ $company->id }}" selected>{{ $company->name }}</option>
+                                </select>
+                            @else
+                                <select name="company_id" class="form-control" id="companyInput">
+                                @foreach($companies as $company)
+                                    <option value="{{ $company->id }}">{{ $company->name }}</option>
+                                @endforeach
+                                </select>
+                            @endif
                         </div>
                     </div>
                     <div class="card-footer">

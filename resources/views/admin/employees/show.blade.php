@@ -9,7 +9,7 @@
         <div class="col-md-11 m-5">
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <p class="lead">{{ $employee->name }}</p>
+                    <p class="lead">{{ __('Employee info') }}</p>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
