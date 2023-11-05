@@ -1,4 +1,9 @@
 @extends('layouts.admin')
+
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}">
+@endpush
+
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
@@ -13,45 +18,84 @@
                     </ol>
                 </div>
             </div>
-        </div><!-- /.container-fluid -->
+        </div>
     </section>
     @foreach($companies as $company)
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title"><a href="{{ route('companies.show', $company->id) }}">{{ $company->name }}</a></h3>
-                <a href="{{ route('employees.create', ['companyID' => $company->id]) }}" class="btn btn-primary float-right">{{ __('Add new employee') }}</a>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                        <th>№</th>
-                        <th>{{ __('First Name') }}</th>
-                        <th>{{ __('Second Name') }}</th>
-                        <th>{{ __('Email') }}</th>
-                        <th>{{ __('Phone') }}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @php
-                        $counter = 1;
-                    @endphp
-                    @foreach($employees as $employee)
-                        @if($employee->company->id === $company->id)
-                            <tr>
-                                <td>{{ $counter++ }}</td>
-                                <td><a href="{{ route('employees.show', $employee->id) }}" >{{ $employee->first_name }}</a></td>
-                                <td>{{ $employee->second_name }}</td>
-                                <td>{{ $employee->email }}</td>
-                                <td>{{ $employee->phone }}</td>
-                            </tr>
-                        @endif
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
-            <!-- /.card-body -->
-        </div>
+        @include('components.admin.employees.table-list')
     @endforeach
+    <div id="addEmployeeFormContainer"></div>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
+@endpush
+
+@push('scripts')
+    <script>
+        $(document).ready(function () {
+
+            var message = '{{ session('delete-message') }}';
+
+            if (message) {
+                toastr.success(message);
+            }
+
+            $('[name="addEmployeeBtn"]').click(function (e) {
+                e.preventDefault();
+                var button = e.target;
+                // alert($(button).data('url'));
+
+                $.ajax({
+                    url: $(button).data('url'),
+                    type: 'GET',
+                    success: function (response) {
+
+                        $('#addEmployeeFormContainer').html(response);
+                        $('#addEmployeeModal').modal('show');
+
+                        $('#addEmployeeForm').submit(function (e) {
+                            e.preventDefault();
+
+                            var formData = new FormData(this);
+
+                            $.ajax({
+                                url: $(this).attr('{{ route('employees.store') }}'),
+                                type: $(this).attr('method'),
+                                dataType: 'json',
+                                data: formData,
+                                processData: false,
+                                contentType: false,
+                                success: function (response) {
+
+                                    $('#addEmployeeModal').modal('hide');
+                                    toastr.success(response.data.messages.store);
+
+                                },
+                                error: function (xhr, status, error) {
+
+                                    var errors = JSON.parse(xhr.responseText).errors;
+
+                                    $('.text-danger').text('');
+
+                                    for (var key in errors) {
+                                        if (errors.hasOwnProperty(key)) {
+                                            var lastError = errors[key][errors[key].length - 1];
+                                            $('[name="' + key + '"]').val('');
+                                            $('#' + key + '-emp_error_text').text(lastError);
+                                        }
+                                    }
+                                },
+                            });
+
+                        });
+
+                    },
+                    error: function (xhr, status, error) {
+
+                        console.error(xhr.responseText);
+                    },
+                });
+            });
+        });
+    </script>
+@endpush

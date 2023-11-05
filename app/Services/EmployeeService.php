@@ -8,12 +8,12 @@ class EmployeeService
 {
     public function store(array $data)
     {
-        Employee::create($data);
+        return Employee::create($data);
 
     }
 
     public function update(Employee $employee, array $data)
     {
-        $employee->update($data);
+        return $employee->update($data);
     }
 }
