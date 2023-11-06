@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CompaniesController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\EmployeesController;
+use App\Http\Controllers\LangController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/lang/{lang}', LangController::class)->name('lang.change');
 
 Route::get('/', WelcomeController::class)->name('welcome');
 
