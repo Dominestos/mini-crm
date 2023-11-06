@@ -1,21 +1,9 @@
 <div class="flex items-center gap-4">
-    <form action="/locale" method="post">
-        @csrf
-        <label for="lang">Language</label>
-        <select name="lang" id="lang">
-            <option value="en">Englesh</option>
-            <option value="ru">Rusish</option>
-        </select>
-        <button type="submit">Set</button>
-    </form>
+    <div class="nav-item dropdown d-inline-block">
+        <a class="nav-link" data-toggle="dropdown" href="#"><span class="mx-3">Language</span></a>
+        <div class="dropdown-menu dropdown-menu-right p-0">
+            <a href="{{ route('lang.change', 'en') }}" class="dropdown-item active">English</a>
+            <a href="{{ route('lang.change', 'ru') }}" class="dropdown-item">Russian</a>
+        </div>
+    </div>
 </div>
-
-{{--
-<form action="{{ route('locale') }}" method="POST">
-    @csrf
-    <select name="locale" onchange="this.form.submit()">
-        <option value="en" {{ session('locale') === 'en' ? 'selected' : '' }}>English</option>
-        <option value="fr" {{ session('locale') === 'fr' ? 'selected' : '' }}>French</option>
-    </select>
-</form>
---}}

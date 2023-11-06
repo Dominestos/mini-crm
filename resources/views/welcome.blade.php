@@ -208,7 +208,7 @@
                             </svg>
                         </div>
 
-                        <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">{{ __('headers.documentation') }}</h2>
+                        <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">{{ __('Documentation') }}</h2>
 
                         <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                             Laravel has wonderful documentation covering every aspect of the framework. Whether you are
@@ -236,7 +236,7 @@
                             </svg>
                         </div>
 
-                        <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">{{ __('headers.laracasts') }}</h2>
+                        <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">{{ __('Laracasts') }}</h2>
 
                         <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                             Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development.
@@ -264,7 +264,7 @@
                             </svg>
                         </div>
 
-                        <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">{{ __('headers.laravel_news') }}</h2>
+                        <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">{{ __('Laravel News') }}</h2>
 
                         <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                             Laravel News is a community driven portal and newsletter aggregating all of the latest and
@@ -291,7 +291,7 @@
                             </svg>
                         </div>
 
-                        <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">{{ __('headers.vibrant_ecosystem') }}</h2>
+                        <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">{{ __('Vibrant Ecosystem') }}</h2>
 
                         <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                             Laravel's robust library of first-party tools and libraries, such as <a

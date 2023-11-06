@@ -8,13 +8,14 @@ use Illuminate\Support\Facades\Redirect;
 
 class LangController extends Controller
 {
-    public function __construct()
+    public function __invoke($lang)
     {
-        $this->middleware('lang');
-    }
-    public function change()
-    {
-        dd(request('lang'));
-        return back()->with('language', );
+        session(['locale' => $lang]);
+        $locale = session('locale');
+        App::setLocale($locale);
+
+        session()->save();
+
+        return back();
     }
 }

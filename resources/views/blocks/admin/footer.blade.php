@@ -8,14 +8,14 @@
             <div class="col-md-6 text-right">
                 <div class="nav-item dropdown d-inline-block">
                     <a class="nav-link" data-toggle="dropdown" href="#"><span class="mx-3">Language</span>
-                        <i class="flag-icon flag-icon-us"></i>
+                        <i class="flag-icon flag-icon-{{ App::getLocale() === 'ru' ? 'ru' : 'gb' }}"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right p-0">
-                        <a href="#" class="dropdown-item active">
-                            <i class="flag-icon flag-icon-us mr-2"></i> English
+                        <a href="{{ route('lang.change', 'en') }}" class="dropdown-item active">
+                            <i class="flag-icon flag-icon-gb mr-2"></i> English
                         </a>
-                        <a href="#" class="dropdown-item">
-                            <i class="flag-icon flag-icon-ru mr-2"></i> Russian
+                        <a href="{{ route('lang.change', 'ru') }}" class="dropdown-item">
+                            <i class="flag-icon flag-icon-ru mr-2" data-lang="ru"></i> Russian
                         </a>
                     </div>
                 </div>

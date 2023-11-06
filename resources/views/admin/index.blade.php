@@ -30,6 +30,7 @@
                         <div class="card-body">
 
                             <p class="card-text">{{ __("Welcome, Administrator!") }}</p>
+                            <p class="card-text">{{ Illuminate\Support\Facades\App::getLocale() }}</p>
                         </div>
                     </div>
                 </div>
