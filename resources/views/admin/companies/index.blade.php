@@ -23,6 +23,8 @@
                                     <th>{{ __('Email') }}</th>
                                     <th>{{ __('Phone') }}</th>
                                     <th>{{ __('Website') }}</th>
+                                    <th>{{ __('Logo') }}</th>
+                                    <th>{{ __('Note') }}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -34,6 +36,8 @@
                                         <td>{{ $company->email }}</td>
                                         <td>{{ $company->phone }}</td>
                                         <td>{{ $company->website }}</td>
+                                        <td>{{ $company->logo }}</td>
+                                        <td>{{ $company->note }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -44,6 +48,8 @@
                                     <th>{{ __('Email') }}</th>
                                     <th>{{ __('Phone') }}</th>
                                     <th>{{ __('Website') }}</th>
+                                    <th>{{ __('Logo') }}</th>
+                                    <th>{{ __('Note') }}</th>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -137,13 +143,22 @@
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
+                columnDefs: [
+                    {
+                        targets: [0, 5, 6],
+                        visible: false,
+                    }
+                ],
                 "buttons": [
                     "excel",
                     "colvis"
                 ],
             }).buttons().container().appendTo('#companies-table_wrapper .col-md-6:eq(0)');
-            $("#companies-table").on('click', '.clickable-row', function () {
-                window.location = $(this).data("url");
+            $('.dtr-control::before').each(function() {
+                console.log($(this));
+            });
+            $("#companies-table").on('click', 'td:not(.dtr-control)', function () {
+                window.location = $(this).closest('.clickable-row').data("url");
             });
         });
     </script>

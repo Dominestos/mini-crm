@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Company;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateRequest extends FormRequest
 {
@@ -21,11 +22,25 @@ class UpdateRequest extends FormRequest
      */
     public function rules(): array
     {
+        $company = $this->route('company');
         return [
             'name' => ['max:20', 'required'],
-            'email' => ['email', 'required'],
-            'phone' => ['string', 'regex:/^\+?\d{1,3}[-\s]?\d{5,10}$/', 'required'],
-            'website' => ['url:http,https', 'required'],
+            'email' => [
+                'email',
+                'required',
+                Rule::unique('companies')->ignore($company->id),
+            ],
+            'phone' => [
+                'string',
+                'regex:/^\+?\d{1,3}[-\s]?\d{5,10}$/',
+                'required',
+                Rule::unique('companies')->ignore($company->id),
+            ],
+            'website' => [
+                'url:http,https',
+                'required',
+                Rule::unique('companies')->ignore($company->id),
+            ],
             'logo' => ['image', 'nullable'],
             'note' => ['string', 'nullable'],
         ];

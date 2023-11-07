@@ -108,9 +108,8 @@
 
                                     for (var key in errors) {
                                         if (errors.hasOwnProperty(key)) {
-                                            console.log(formData[key]);
                                             var lastError = errors[key][errors[key].length - 1];
-                                            $('[name="' + key + '"]').val();
+                                            $('[name="' + key + '"]').val('');
                                             $('#emp-' + key + '-error_text').text(lastError);
                                         }
                                     }

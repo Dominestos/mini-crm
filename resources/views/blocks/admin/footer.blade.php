@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 align-self-center">
-                <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-                All rights reserved.
+                <strong>Copyright &copy; 2023 <a href="{{ route('welcome') }}">Mini CRM</a>.</strong>
+                Your personal assistant.
             </div>
             <div class="col-md-6 text-right">
                 <div class="nav-item dropdown d-inline-block">

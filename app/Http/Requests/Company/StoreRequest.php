@@ -23,9 +23,9 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => ['max:20', 'required'],
-            'email' => ['email', 'required'],
-            'phone' => ['string', 'regex:/^\+?\d{1,3}[-\s]?\d{5,10}$/', 'required'],
-            'website' => ['url:http,https', 'required'],
+            'email' => ['email', 'required', 'unique:App\Models\Company'],
+            'phone' => ['string', 'regex:/^\+?\d{1,3}[-\s]?\d{5,10}$/', 'required', 'unique:App\Models\Company'],
+            'website' => ['url:http,https', 'required', 'unique:App\Models\Company'],
             'logo' => ['image', 'nullable'],
             'note' => ['string', 'nullable'],
         ];
