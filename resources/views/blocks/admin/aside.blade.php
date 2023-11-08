@@ -1,7 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ route('admin.index') }}" class="brand-link d-flex justify-content-center align-items-center">
-        <span class="brand-text font-weight-light">MINI-SRM</span>
+    <a href="{{ route('admin.index') }}" class="brand-link">
+        <x-application-logo class="brand-image block fill-current text-gray-800" height="40" width="auto" />
+        <span class="brand-text font-weight-light mx-2">MINI-SRM</span>
     </a>
 
     <!-- Sidebar -->

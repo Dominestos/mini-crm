@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>{{ __('Do you really want to delete this company') }}</p>
+                <p>{{ __('Do you really want to delete this company?') }}</p>
             </div>
             <div class="modal-footer justify-content-between">
                 <form action="{{ route('companies.destroy', $company->id) }}" method="post">

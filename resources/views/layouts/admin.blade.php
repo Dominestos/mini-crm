@@ -22,15 +22,26 @@
     <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+    <style>
+        .nav-button {
+            position: relative;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-button:hover {
+            border-bottom-color: lightgray;
+        }
+
+        .nav-button.active {
+            border-bottom-color: blue;
+        }
+    </style>
     @stack('styles')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-    <!-- Preloader -->
-    <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60" width="60">
-    </div>
+    @yield('preloader')
 
     <!-- Navbar -->
     @include('blocks.admin.nav-header')

@@ -28,7 +28,7 @@
                                 <td>{{ $company->phone }}</td>
                             </tr>
                             <tr>
-                                <th>T{{ __('Website') }}:</th>
+                                <th>{{ __('Website') }}:</th>
                                 <td>{{ $company->website }}</td>
                             </tr>
                             <tr>
@@ -59,8 +59,8 @@
                         <thead>
                         <tr>
                             <th>№</th>
-                            <th>{{ __('First name') }}</th>
-                            <th>{{ __('Second name') }}</th>
+                            <th>{{ __('First Name') }}</th>
+                            <th>{{ __('Second Name') }}</th>
                             <th>{{ __('Email') }}</th>
                             <th>{{ __('Phone') }}</th>
                             <th>{{ __('Company') }}</th>
@@ -81,8 +81,8 @@
                         <tfoot>
                         <tr>
                             <th>№</th>
-                            <th>{{ __('First name') }}</th>
-                            <th>{{ __('Second name') }}</th>
+                            <th>{{ __('First Name') }}</th>
+                            <th>{{ __('Second Name') }}</th>
                             <th>{{ __('Email') }}</th>
                             <th>{{ __('Phone') }}</th>
                             <th>{{ __('Company') }}</th>

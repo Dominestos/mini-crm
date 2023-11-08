@@ -11,7 +11,7 @@
                 <div class="col-12 my-5">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">{{ __('Employees list') }}</h3>
+                            <h3 class="card-title">{{ __('Employee list') }}</h3>
                             <button id="addEmployeeBtn" type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modal-lg">{{ __('Add new employee') }}</button>
                         </div>
                         <div class="card-body">
@@ -19,8 +19,8 @@
                                 <thead>
                                 <tr>
                                     <th>№</th>
-                                    <th>{{ __('First name') }}</th>
-                                    <th>{{ __('Second name') }}</th>
+                                    <th>{{ __('First Name') }}</th>
+                                    <th>{{ __('Second Name') }}</th>
                                     <th>{{ __('Email') }}</th>
                                     <th>{{ __('Phone') }}</th>
                                     <th>{{ __('Company') }}</th>
@@ -42,8 +42,8 @@
                                 <tfoot>
                                 <tr>
                                     <th>№</th>
-                                    <th>{{ __('First name') }}</th>
-                                    <th>{{ __('Second name') }}</th>
+                                    <th>{{ __('First Name') }}</th>
+                                    <th>{{ __('Second Name') }}</th>
                                     <th>{{ __('Email') }}</th>
                                     <th>{{ __('Phone') }}</th>
                                     <th>{{ __('Company') }}</th>

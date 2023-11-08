@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>{{ __('Do you really want to delete this employee') }}</p>
+                <p>{{ __('Do you really want to delete this employee?') }}</p>
             </div>
             <div class="modal-footer justify-content-between">
                 <form action="{{ route('employees.destroy', $employee->id) }}" method="post">

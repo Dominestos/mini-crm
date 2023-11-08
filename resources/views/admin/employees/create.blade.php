@@ -53,7 +53,7 @@
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">{{ __('Confirm') }}</button>
-                        <a href="{{ route('employees.index') }}" type="submit" class="btn btn-secondary">{{ __('Cancel') }}</a>
+                        <button type="button" class="btn btn-secondary mx-4" data-dismiss="modal" aria-label="Close">{{ __('Cancel') }}</button>
                     </div>
                 </form>
             </div>

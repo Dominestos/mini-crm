@@ -24,8 +24,8 @@ class StoreRequest extends FormRequest
         return [
             'first_name' => ['string', 'max:20', 'required'],
             'second_name' => ['string', 'max:20', 'required'],
-            'email' => ['email', 'required'],
-            'phone' => ['string', 'regex:/^\+?\d{1,3}[-\s]?\d{5,10}$/', 'required'],
+            'email' => ['email', 'required', 'unique:App\Models\Employee'],
+            'phone' => ['string', 'regex:/^\+?\d{1,3}[-\s]?\d{5,10}$/', 'required', 'unique:App\Models\Employee'],
             'note' => ['string', 'nullable'],
             'company_id' => ['integer', 'required'],
         ];
