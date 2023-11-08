@@ -1,6 +1,6 @@
-Mini-CRM
+# Mini-CRM
 ---
-> [!info]- Description
+> [!info]- Description.
 Mini CRM is a small application, a crm-system with an administrator panel. There are 2 tables in the admin panel: companies and employees. both are implemented according to CRUD and have one-to-many relationships (companies to employees).
 
 ## Implementation details:
